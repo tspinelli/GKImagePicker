@@ -174,7 +174,7 @@ static CGRect GKScaleRect(CGRect rect, CGFloat scale)
 {
     self = [super initWithFrame:frame];
     if (self) {
-
+        self.useToolbar = YES;
         self.userInteractionEnabled = YES;
         self.backgroundColor = [UIColor blackColor];
         self.scrollView = [[ScrollView alloc] initWithFrame:self.bounds ];
@@ -229,7 +229,7 @@ static CGRect GKScaleRect(CGRect rect, CGFloat scale)
     [super layoutSubviews];
     
     CGSize size = self.cropSize;
-    CGFloat toolbarSize = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 0 : 54;
+    CGFloat toolbarSize = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 0 : (self.useToolbar?54:0) ;
     self.xOffset = floor((CGRectGetWidth(self.bounds) - size.width) * 0.5);
     self.yOffset = floor((CGRectGetHeight(self.bounds) - toolbarSize - size.height) * 0.5); //fixed
 
